@@ -27,7 +27,7 @@ export default function Header({ setModalType, page }: HeaderProps) {
   return (
     <div className={css.header} style={headerStyle}>
       <div className={css.logo}>
-        <Link to="/home" aria-label="Home" className={css.logo_text}>
+        <Link to="/" aria-label="Home" className={css.logo_text}>
           Nanny.Services
         </Link>
       </div>
@@ -35,7 +35,7 @@ export default function Header({ setModalType, page }: HeaderProps) {
         <nav className={css.nav}>
           <ul className={css.navigation}>
             <li>
-              <Link className={css.nav_text} to="/home">
+              <Link className={css.nav_text} to="/">
                 Home
               </Link>
             </li>
