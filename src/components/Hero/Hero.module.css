@@ -4,28 +4,19 @@
   border-radius: 30px;
   overflow: hidden;
   margin: 0 auto;
-  min-height: 80vh;
   width: 100%;
 }
 
+.hero_left {
+  width: 100%;
+  background: #f03f3b;
+  padding: 251px 64px 163px 96px;
+}
+
 .left_inner {
-  max-width: 517px;
   display: flex;
   flex-direction: column;
   gap: 64px;
-}
-
-.inner_text {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.hero_left {
-  background: #f03f3b;
-  padding-top: 251px;
-  padding-bottom: 163px;
-  padding-left: 96px;
 }
 
 .hero_left,
@@ -40,7 +31,8 @@
   line-height: 100%;
   letter-spacing: -0.03em;
   color: #fbfbfb;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 28px;
 }
 
 .text {
@@ -53,31 +45,40 @@
 }
 
 .btn {
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  padding: 18px 50px;
+  background-color: transparent;
+  cursor: pointer;
   font-weight: 500;
   font-size: 20px;
   line-height: 120%;
   letter-spacing: -0.01em;
+  text-decoration: none;
   color: #fbfbfb;
-  border: 1px solid rgba(251, 251, 251, 0.4);
-  border-radius: 30px;
-  padding: 18px 50px;
-  max-width: 230px;
-  background-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.btn svg {
+  fill: #fbfbfb;
+  transition: transform 0.2s ease;
   cursor: pointer;
 }
 
-.btn:hover {
-  color: #f03f3b;
-  background: #fbfbfb;
+.btn:hover svg {
+  transform: rotate(55deg);
 }
 
-.spn {
-  margin-left: 5px;
+.btn:hover {
+  border: 1px solid rgba(251, 251, 251, 0.804);
 }
 
 .hero_right {
   position: relative;
-  padding: clamp(40px, 5vw, 80px);
+  padding: 568px 50px 50px 365px;
   background-image: url(/HeroImages/Rectangle-1-min.jpg);
   background-repeat: no-repeat;
   background-position: center;

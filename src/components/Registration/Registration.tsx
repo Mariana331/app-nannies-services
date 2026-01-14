@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useModal } from "../ModalContext/UseModal";
+import { useState } from "react";
 
 interface RegistrationFormData {
   name: string;
@@ -25,6 +26,8 @@ const Schema = Yup.object().shape({
 });
 
 export default function Registration() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const { closeModal } = useModal();
   const { register, handleSubmit } = useForm<RegistrationFormData>({
     resolver: yupResolver(Schema),
@@ -68,13 +71,30 @@ export default function Registration() {
           placeholder="Email"
           required
         />
-        <input
-          {...register("password")}
-          className={css.input}
-          type="password"
-          placeholder="Password"
-          required
-        />
+        <div className={css.box_password}>
+          <button
+            className={css.btn_eyes}
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            {showPassword ? (
+              <svg width={20} height={20} className={css.eye_icon}>
+                <use href="/sprite.svg#icon-eye"></use>
+              </svg>
+            ) : (
+              <svg width={20} height={20} className={css.eye_icon}>
+                <use href="/sprite.svg#icon-eye-off"></use>
+              </svg>
+            )}
+          </button>
+          <input
+            {...register("password")}
+            className={css.input}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            required
+          />
+        </div>
       </form>
       <button className={css.btn_signup} onClick={closeModal}>
         Sign Up

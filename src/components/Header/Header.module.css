@@ -20,6 +20,15 @@
   letter-spacing: -0.02em;
   color: #fbfbfb;
   text-decoration: none;
+  opacity: 0.75;
+  transition: 0.2s ease;
+}
+
+.nav_text:hover,
+.logo_text:hover {
+  font-weight: 600;
+  opacity: 1;
+  color: #cb2650;
 }
 
 .menu {
@@ -41,6 +50,8 @@
   letter-spacing: -0.01em;
   color: #fbfbfb;
   text-decoration: none;
+  opacity: 0.75;
+  transition: 0.2s ease;
 }
 
 .registration {

@@ -1,4 +1,5 @@
 import css from "./Hero.module.css";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -11,9 +12,14 @@ export default function Hero() {
               Find Babysitters Online for All Occasions
             </p>
           </div>
-          <button className={css.btn}>
-            Get started<span className={css.spn}>↗</span>
-          </button>
+          <Link className={css.link_nannies} to="/nannies" aria-label="Nannies">
+            <button className={css.btn} type="button">
+              Get started
+              <svg className={css.btn_icon} width={14} height={16}>
+                <use href="/public/sprite.svg#icon-arrow"></use>
+              </svg>
+            </button>
+          </Link>
         </div>
       </div>
       <div className={css.hero_right}>

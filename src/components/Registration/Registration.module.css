@@ -76,6 +76,20 @@
   color: #11101c;
 }
 
+.box_password {
+  position: relative;
+}
+
+.btn_eyes {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: block;
+}
+
 .btn_signup {
   width: 100%;
   height: 52px;

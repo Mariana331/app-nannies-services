@@ -77,6 +77,24 @@
   color: #11101c;
 }
 
+.box_password {
+  position: relative;
+}
+
+.btn_eyes {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: block;
+}
+
+.eye_icon {
+  color: #cb2650;
+}
+
 .btn_login {
   display: flex;
   align-items: center;
