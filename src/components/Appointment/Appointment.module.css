@@ -2,12 +2,11 @@
   position: relative;
   width: 100%;
   background: #fbfbfb;
-  max-width: 599px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   border-radius: 30px;
-  padding: clamp(24px, 5vw, 64px);
+  padding: 64px;
 }
 
 .btn_close {
@@ -27,12 +26,6 @@
 }
 
 .appointment_info {
-  top: 64px;
-  left: 64px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 472px;
   border-radius: 15px;
   border: none;
   margin-bottom: 40px;
@@ -44,8 +37,8 @@
   line-height: 120%;
   letter-spacing: -0.02em;
   color: #11101c;
-  padding: 0;
-  margin: 0;
+  margin-bottom: 20px;
+  margin-top: 0;
 }
 
 .appointment_text {
@@ -53,7 +46,6 @@
   font-size: 16px;
   line-height: 125%;
   color: rgba(17, 16, 28, 0.5);
-  padding: 0;
   margin: 0;
 }
 
@@ -63,7 +55,7 @@
   margin-bottom: 40px;
 }
 
-.nanny_photo {
+.avatar {
   border-radius: 15px;
 }
 
@@ -72,6 +64,7 @@
   font-size: 12px;
   line-height: 133%;
   color: #8a8a89;
+  margin: 0;
 }
 
 .nanny_name_name {
@@ -79,6 +72,7 @@
   font-size: 16px;
   line-height: 150%;
   color: #11101c;
+  margin: 0;
 }
 
 .form {
@@ -99,6 +93,7 @@
   padding: 0 16px;
   height: 52px;
   box-sizing: border-box;
+  min-width: 0;
 }
 
 .color_text {
@@ -150,6 +145,7 @@
   color: #fbfbfb;
   cursor: pointer;
   margin-top: 24px;
+  width: 100%;
 }
 
 .form_btn:hover {

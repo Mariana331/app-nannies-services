@@ -184,17 +184,18 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+  margin-bottom: 23px;
 }
 
 .review_name {
   display: flex;
   gap: 12px;
+  max-height: 44px;
 }
 
 .name_one_letter {
   border-radius: 100px;
-  width: 44px;
-  height: 44px;
+  padding: 12px 15px;
   background: rgba(240, 63, 59, 0.2);
 }
 
@@ -203,11 +204,29 @@
   font-size: 20px;
   line-height: 100%;
   color: #f03f3b;
+  margin: 0;
+}
+
+.name_full {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.name_full_black {
+  margin: 0 0 4px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: #11101c;
+}
+
+.name_full_info {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .name_full_icon {
-  left: 0;
-  bottom: 0;
   display: block;
 }
 

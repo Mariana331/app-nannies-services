@@ -22,11 +22,7 @@ const Schema = Yup.object().shape({
 export default function Login() {
   const { closeModal } = useModal();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormData>({
+  const { register, handleSubmit } = useForm<LoginFormData>({
     resolver: yupResolver(Schema),
   });
 
@@ -58,15 +54,15 @@ export default function Login() {
           className={css.input}
           type="email"
           placeholder="Email"
+          required
         />
-        <p className={css.color_text}>{errors.email?.message}</p>
         <input
           {...register("password")}
           className={css.input}
           type="password"
           placeholder="Password"
+          required
         />
-        <p className={css.color_text}>{errors.password?.message}</p>
       </form>
       <button className={css.btn_login} onClick={closeModal}>
         Log In

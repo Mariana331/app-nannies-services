@@ -2,12 +2,13 @@ import css from "./NannyCard.module.css";
 import type { Nanny } from "../../types/types";
 import { useModal } from "../ModalContext/UseModal";
 import { useState } from "react";
+import Appointment from "../Appointment/Appointment";
 
-interface NannyProps {
+interface NannyCardProps {
   nanny: Nanny;
 }
 
-export default function NannyCard({ nanny }: NannyProps) {
+export default function NannyCard({ nanny }: NannyCardProps) {
   const { openModal } = useModal();
 
   const [showReviews, setShowReviews] = useState(false);
@@ -110,13 +111,15 @@ export default function NannyCard({ nanny }: NannyProps) {
           </div>
         </div>
         <p className={css.about}>{nanny.about}</p>
-        <button
-          type="button"
-          className={css.brn_more}
-          onClick={() => setShowReviews((prev) => !prev)}
-        >
-          {showReviews ? "Hide" : "Read more"}
-        </button>
+        {!showReviews && (
+          <button
+            type="button"
+            className={css.brn_more}
+            onClick={() => setShowReviews(true)}
+          >
+            Read more
+          </button>
+        )}
         {showReviews && (
           <div className={css.review}>
             {nanny.reviews?.map((review, index) => (
@@ -126,13 +129,17 @@ export default function NannyCard({ nanny }: NannyProps) {
                     <p className={css.name_one_text}>{review.reviewer[0]}</p>
                   </div>
                   <div className={css.name_full}>
-                    <p className={css.name_full_black}>
-                      {review.reviewer.slice(0, 5)}.
-                    </p>
-                    <svg className={css.name_full_icon} width={16} height={16}>
-                      <use href="/sprite.svg#icon-star"></use>
-                    </svg>
-                    <p className={css.name_full_text}>{review.rating}</p>
+                    <p className={css.name_full_black}>{review.reviewer}</p>
+                    <div className={css.name_full_info}>
+                      <svg
+                        className={css.name_full_icon}
+                        width={16}
+                        height={16}
+                      >
+                        <use href="/sprite.svg#icon-star"></use>
+                      </svg>
+                      <p className={css.name_full_text}>{review.rating}</p>
+                    </div>
                   </div>
                 </div>
                 <p className={css.review_comment}>{review.comment}</p>
@@ -142,7 +149,11 @@ export default function NannyCard({ nanny }: NannyProps) {
         )}
         {showReviews && (
           <div className={css.btn}>
-            <button type="button" className={css.card_btn} onClick={openModal}>
+            <button
+              type="button"
+              className={css.card_btn}
+              onClick={() => openModal(<Appointment nanny={nanny} />)}
+            >
               Make an appointment
             </button>
           </div>

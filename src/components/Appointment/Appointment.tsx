@@ -3,6 +3,7 @@ import { useModal } from "../ModalContext/UseModal";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import type { Nanny } from "../../types/types";
 
 interface AppointmentFormData {
   address: string;
@@ -12,6 +13,10 @@ interface AppointmentFormData {
   email: string;
   text: string;
   comment: string;
+}
+
+interface AppointmentProps {
+  nanny: Nanny;
 }
 
 export const AppointmentSchema = Yup.object().shape({
@@ -40,16 +45,14 @@ export const AppointmentSchema = Yup.object().shape({
   comment: Yup.string().optional().required("Comment is required"),
 });
 
-export default function Appointment() {
+export default function Appointment({ nanny }: AppointmentProps) {
   const { closeModal } = useModal();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<AppointmentFormData>({
+  const { register, handleSubmit, reset } = useForm<AppointmentFormData>({
     resolver: yupResolver(AppointmentSchema),
+    defaultValues: {
+      meetingTime: "00:00",
+    },
   });
 
   const onSubmit = (data: AppointmentFormData) => {
@@ -70,7 +73,7 @@ export default function Appointment() {
       </button>
       <div className={css.appointment_info}>
         <h2 className={css.appointment_title}>
-          Make an appointment<br></br> with a babysitter
+          Make an appointment with a babysitter
         </h2>
         <p className={css.appointment_text}>
           Arranging a meeting with a caregiver for your child is the first step
@@ -82,15 +85,15 @@ export default function Appointment() {
         <div className={css.nanny_photo}>
           <img
             className={css.avatar}
-            // src={nanny.avatar_ur}
-            // alt={nanny}
+            src={nanny.avatar_url}
+            alt={nanny.name}
             width={44}
             height={44}
           ></img>
         </div>
         <div className={css.nanny_name}>
           <p className={css.nanny_name_text}>Nanny</p>
-          {/* <p className={css.nanny_name_name}>{nanny.name}</p> */}
+          <p className={css.nanny_name_name}>{nanny.name}</p>
         </div>
       </div>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
@@ -100,64 +103,53 @@ export default function Appointment() {
             className={css.input_row}
             type="text"
             placeholder="Address"
+            required
           ></input>
-          <p className={css.color_text}>{errors.address?.message}</p>
           <input
             {...register("tel")}
             className={css.input_row}
             type="tel"
             placeholder="+380"
+            required
           ></input>
-          <p className={css.color_text}>{errors.tel?.message}</p>
         </div>
         <div className={css.form_row}>
-          <label>
-            <input
-              {...register("number")}
-              className={css.input_row}
-              type="number"
-              placeholder="Child's age"
-            ></input>
-          </label>
-          <label>
-            Meeting time
-            <p className={css.color_text}>{errors.number?.message}</p>
-            <input
-              {...register("meetingTime")}
-              className={css.input_row}
-              type="time"
-              placeholder="00:00"
-            ></input>
-            <p className={css.color_text}>{errors.meetingTime?.message}</p>
-          </label>
+          <input
+            {...register("number")}
+            className={css.input_row}
+            type="number"
+            placeholder="Child's age"
+            required
+          ></input>
+          <input
+            {...register("meetingTime")}
+            className={css.input_row}
+            type="time"
+            required
+          ></input>
         </div>
-
-        <label>
-          <input
-            {...register("email")}
-            className={css.input}
-            type="email"
-            placeholder="Email"
-          ></input>
-          <p className={css.color_text}>{errors.email?.message}</p>
-        </label>
-        <label>
-          <input
-            {...register("text")}
-            className={css.input}
-            type="text"
-            placeholder="Father's or mother's name"
-          ></input>
-          <p className={css.color_text}>{errors.text?.message}</p>
-        </label>
+        <input
+          {...register("email")}
+          className={css.input}
+          type="email"
+          placeholder="Email"
+          required
+        ></input>
+        <input
+          {...register("text")}
+          className={css.input}
+          type="text"
+          placeholder="Father's or mother's name"
+          required
+        ></input>
         <textarea
           {...register("comment")}
           className={css.textarea}
           name="comment"
           placeholder="Comment"
           rows={3}
+          required
         />
-        <p className={css.color_text}>{errors.comment?.message}</p>
         <button className={css.form_btn} type="submit">
           Send
         </button>
