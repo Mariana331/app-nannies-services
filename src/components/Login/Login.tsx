@@ -69,7 +69,7 @@ export default function Login() {
                 <use href="/sprite.svg#icon-eye"></use>
               </svg>
             ) : (
-              <svg width={20} height={20} className={css.eye_icon}>
+              <svg width={20} height={20} className={css.eye_icon_off}>
                 <use href="/sprite.svg#icon-eye-off"></use>
               </svg>
             )}

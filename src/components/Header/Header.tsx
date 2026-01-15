@@ -1,5 +1,5 @@
 import css from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useModal } from "../ModalContext/UseModal";
 
 interface HeaderProps {
@@ -9,6 +9,7 @@ interface HeaderProps {
 
 export default function Header({ setModalType, page }: HeaderProps) {
   const { openModal } = useModal();
+  const location = useLocation();
 
   const openLogin = () => {
     setModalType("login");
@@ -23,6 +24,8 @@ export default function Header({ setModalType, page }: HeaderProps) {
   const headerStyle: React.CSSProperties = {
     backgroundColor: page === "/nannies" ? "red" : "transparent",
   };
+
+  const isNannies = location.pathname === "/nannies";
 
   return (
     <div className={css.header} style={headerStyle}>
@@ -39,10 +42,15 @@ export default function Header({ setModalType, page }: HeaderProps) {
                 Home
               </Link>
             </li>
-            <li>
+            <li className={css.nav_item}>
               <Link className={css.nav_text} to="/nannies">
                 Nannies
               </Link>
+              {isNannies && (
+                <svg className={css.icon_point} width={8} height={8}>
+                  <use href="/sprite.svg#icon-point_white"></use>
+                </svg>
+              )}
             </li>
           </ul>
         </nav>

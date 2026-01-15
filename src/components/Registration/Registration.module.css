@@ -90,6 +90,13 @@
   display: block;
 }
 
+.eye_icon,
+.eye_icon_off {
+  color: #11101c;
+  stroke: currentColor;
+  fill: none;
+}
+
 .btn_signup {
   width: 100%;
   height: 52px;

@@ -11,7 +11,11 @@ const options = [
   "Show all",
 ];
 
-export default function CustomSelect() {
+interface CustomSelectProps {
+  onChange: (value: string) => void;
+}
+
+export default function CustomSelect({ onChange }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("A to Z");
   const selectRef = useRef<HTMLDivElement>(null);
@@ -21,6 +25,7 @@ export default function CustomSelect() {
   const chooseOption = (option: string) => {
     setSelected(option);
     setIsOpen(false);
+    onChange(option);
   };
 
   useEffect(() => {

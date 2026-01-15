@@ -20,15 +20,13 @@
   letter-spacing: -0.02em;
   color: #fbfbfb;
   text-decoration: none;
-  opacity: 0.75;
-  transition: 0.2s ease;
+  transition: 0.2s ease, text-shadow 0.2s ease;
 }
 
 .nav_text:hover,
 .logo_text:hover {
-  font-weight: 600;
-  opacity: 1;
-  color: #cb2650;
+  color: #ffffff;
+  text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff;
 }
 
 .menu {
@@ -50,8 +48,18 @@
   letter-spacing: -0.01em;
   color: #fbfbfb;
   text-decoration: none;
-  opacity: 0.75;
-  transition: 0.2s ease;
+  transition: 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav_item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.icon_point {
+  fill: #fbfbfb;
 }
 
 .registration {

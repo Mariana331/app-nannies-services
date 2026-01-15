@@ -91,8 +91,11 @@
   display: block;
 }
 
-.eye_icon {
-  color: #cb2650;
+.eye_icon,
+.eye_icon_off {
+  color: #11101c;
+  stroke: currentColor;
+  fill: none;
 }
 
 .btn_login {
