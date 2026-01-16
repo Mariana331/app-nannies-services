@@ -110,6 +110,7 @@
   border: none;
   cursor: pointer;
   outline: none;
+  margin-top: 22px;
 }
 
 .btn_signup:hover {

@@ -67,6 +67,32 @@
   gap: 8px;
 }
 
+.user_info {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.user_btn {
+  cursor: pointer;
+  padding: 8px;
+  background-color: #fbfbfb;
+  border: none;
+  border-radius: 10px;
+}
+
+.icon_user {
+  color: #f03f3b;
+}
+
+.userText {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+}
+
 .btn_log {
   font-weight: 500;
   font-size: 16px;
@@ -81,6 +107,19 @@
 }
 
 .btn_registration {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  border-radius: 30px;
+  padding: 14px 40px;
+  background: #f03f3b;
+  cursor: pointer;
+  border: none;
+}
+
+.btn_logOut {
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;

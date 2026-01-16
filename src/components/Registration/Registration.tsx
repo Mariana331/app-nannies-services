@@ -4,6 +4,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useModal } from "../ModalContext/UseModal";
 import { useState } from "react";
+import { logUp } from "../../services/users";
+import type { RegistrationRequest } from "../../types/users";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import type { AxiosError } from "axios";
 
 interface RegistrationFormData {
   name: string;
@@ -21,11 +26,15 @@ const Schema = Yup.object().shape({
     .required("Email is required!"),
   password: Yup.string()
     .min(8, "Minimum 8 characters")
-    .max(128, "Maximum 8 characters")
+    .max(128, "Maximum 128 characters")
     .required("Password required!"),
 });
 
-export default function Registration() {
+interface RegistrationProps {
+  setIsAuth: (value: boolean) => void;
+}
+
+export default function Registration({ setIsAuth }: RegistrationProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const { closeModal } = useModal();
@@ -33,8 +42,21 @@ export default function Registration() {
     resolver: yupResolver(Schema),
   });
 
-  const onSubmit = (data: RegistrationFormData) => {
-    console.log(data);
+  const onSubmit = async (data: RegistrationFormData) => {
+    try {
+      const res = await logUp(data as RegistrationRequest);
+      localStorage.setItem("token", res.idToken);
+      localStorage.setItem("uid", res.localId);
+      localStorage.setItem("refreshToken", res.refreshToken);
+      localStorage.setItem("userName", data.name);
+
+      toast.success("Registration successful!");
+      closeModal();
+      setIsAuth(true);
+    } catch (error: unknown) {
+      const err = error as AxiosError<{ error: { message: string } }>;
+      toast.error(err.response?.data.error.message || "Something went wrong");
+    }
   };
 
   return (
@@ -95,10 +117,10 @@ export default function Registration() {
             required
           />
         </div>
+        <button className={css.btn_signup} type="submit">
+          Sign Up
+        </button>
       </form>
-      <button className={css.btn_signup} onClick={closeModal}>
-        Sign Up
-      </button>
     </div>
   );
 }

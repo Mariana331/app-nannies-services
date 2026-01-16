@@ -9,25 +9,40 @@ import Registration from "../components/Registration/Registration";
 import Modal from "../components/Modal/Modal";
 import { useModal } from "../components/ModalContext/UseModal";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { logout } from "../services/users";
 
 function App() {
   const { closeModal, isModalOpen } = useModal();
   const [modalType, setModalType] = useState<
     "login" | "register" | "appointment" | null
   >(null);
+  const [isAuth, setIsAuth] = useState<boolean>(
+    () => !!localStorage.getItem("token")
+  );
 
   const location = useLocation();
   const page = location.pathname;
 
   return (
     <div className={css.app_container}>
-      <Header setModalType={setModalType} page={page} />
+      <Header
+        setModalType={setModalType}
+        page={page}
+        isAuth={isAuth}
+        userName={localStorage.getItem("userName") || ""}
+        onLogOut={() => {
+          logout();
+          setIsAuth(false);
+        }}
+      />
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          {modalType === "login" && <Login />}
-          {modalType === "register" && <Registration />}
+          {modalType === "login" && <Login setIsAuth={setIsAuth} />}
+          {modalType === "register" && <Registration setIsAuth={setIsAuth} />}
         </Modal>
       )}
+      <ToastContainer position="top-right" autoClose={3000} />
 
       <Routes>
         <Route path="/" element={<Home />} />

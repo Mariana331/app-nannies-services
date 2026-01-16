@@ -1,0 +1,6 @@
+.favorites {
+  background: #f3f3f3;
+  padding: 152px 128px 100px 128px;
+  display: flex;
+  flex-direction: column;
+}
