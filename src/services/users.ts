@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const SIGN_UP_URL = "https://identitytoolkit.googleapis.com/v1/accounts:signUp";
-const GET_USER_URL =
-  "https://identitytoolkit.googleapis.com/v1/accounts:lookup";
 
 const SIGN_IN_URL =
   "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword";
+
+const API_URL =
+  "https://nanny-servies-app-default-rtdb.europe-west1.firebasedatabase.app/users";
 
 export interface RegistrationRequest {
   name: string;
@@ -36,6 +37,18 @@ export async function logUp(data: RegistrationRequest) {
       email: data.email,
     }
   );
+
+  await axios.post(
+    `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${
+      import.meta.env.VITE_FIREBASE_API_KEY
+    }`,
+    {
+      idToken: idToken,
+      displayName: data.name,
+      returnSecureToken: true,
+    }
+  );
+
   return res.data;
 }
 
@@ -51,16 +64,14 @@ export async function login(data: LoginRequest) {
   return res.data;
 }
 
-export async function getCurrentUser(idToken: string) {
-  const res = await axios.post(
-    `${GET_USER_URL}?key=${import.meta.env.VITE_FIREBASE_API_KEY}`,
-    { idToken }
-  );
-
-  return res.data.users[0];
-}
-
 export function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("uid");
+  localStorage.removeItem("refreshToken");
+  localStorage.removeItem("userName");
 }
+
+export const getUserName = async (localId: string, idToken: string) => {
+  const res = await axios.get(`${API_URL}/${localId}.json?auth=${idToken}`);
+  return res.data.name;
+};

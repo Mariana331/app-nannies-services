@@ -32,9 +32,13 @@ const Schema = Yup.object().shape({
 
 interface RegistrationProps {
   setIsAuth: (value: boolean) => void;
+  setUserName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Registration({ setIsAuth }: RegistrationProps) {
+export default function Registration({
+  setIsAuth,
+  setUserName,
+}: RegistrationProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const { closeModal } = useModal();
@@ -50,6 +54,7 @@ export default function Registration({ setIsAuth }: RegistrationProps) {
       localStorage.setItem("refreshToken", res.refreshToken);
       localStorage.setItem("userName", data.name);
 
+      setUserName(data.name);
       toast.success("Registration successful!");
       closeModal();
       setIsAuth(true);

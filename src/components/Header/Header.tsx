@@ -86,7 +86,7 @@ export default function Header({
                     <use href="/sprite.svg#icon-user"></use>
                   </svg>
                 </button>
-                <p className={css.userText}>{userName}</p>
+                <p className={css.user_text}>{userName}</p>
               </li>
               <li>
                 <button

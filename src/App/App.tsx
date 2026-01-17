@@ -14,16 +14,23 @@ import { logout } from "../services/users";
 
 function App() {
   const { closeModal, isModalOpen } = useModal();
+
   const [modalType, setModalType] = useState<
     "login" | "register" | "appointment" | null
   >(null);
+
   const [isAuth, setIsAuth] = useState<boolean>(
     () => !!localStorage.getItem("token")
   );
+
   const [favorites, setFavorites] = useState<string[]>(() => {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
   });
+
+  const [userName, setUserName] = useState<string>(
+    () => localStorage.getItem("userName") || ""
+  );
 
   const toggleFavorite = (nannyName: string) => {
     setFavorites((prev) => {
@@ -38,6 +45,13 @@ function App() {
     });
   };
 
+  const handleLogOut = () => {
+    logout();
+    localStorage.removeItem("favorites");
+    setIsAuth(false);
+    setUserName("");
+  };
+
   const location = useLocation();
   const page = location.pathname;
 
@@ -47,17 +61,17 @@ function App() {
         setModalType={setModalType}
         page={page}
         isAuth={isAuth}
-        userName={localStorage.getItem("userName") || ""}
-        onLogOut={() => {
-          logout();
-          setIsAuth(false);
-          localStorage.removeItem("favorites");
-        }}
+        userName={userName}
+        onLogOut={handleLogOut}
       />
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          {modalType === "login" && <Login setIsAuth={setIsAuth} />}
-          {modalType === "register" && <Registration setIsAuth={setIsAuth} />}
+          {modalType === "login" && (
+            <Login setIsAuth={setIsAuth} setUserName={setUserName} />
+          )}
+          {modalType === "register" && (
+            <Registration setIsAuth={setIsAuth} setUserName={setUserName} />
+          )}
         </Modal>
       )}
       <ToastContainer position="top-right" autoClose={3000} />

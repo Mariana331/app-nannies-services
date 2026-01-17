@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useModal } from "../ModalContext/UseModal";
 import { useState } from "react";
 import { login } from "../../services/users";
+import { getUserName } from "../../services/users";
 import type { LoginRequest } from "../../services/users";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,9 +28,10 @@ const Schema = Yup.object().shape({
 
 interface LoginProps {
   setIsAuth: (value: boolean) => void;
+  setUserName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Login({ setIsAuth }: LoginProps) {
+export default function Login({ setIsAuth, setUserName }: LoginProps) {
   const [showPassword, setShowPassword] = useState(false);
   const { closeModal } = useModal();
 
@@ -43,6 +45,10 @@ export default function Login({ setIsAuth }: LoginProps) {
       localStorage.setItem("token", res.idToken);
       localStorage.setItem("lid", res.localId);
       localStorage.setItem("refreshToken", res.refreshToken);
+
+      const userNameFromDB = await getUserName(res.localId, res.idToken);
+      localStorage.setItem("userName", userNameFromDB);
+      setUserName(userNameFromDB);
 
       toast.success("Login successful!");
       closeModal();
