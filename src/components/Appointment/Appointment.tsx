@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import type { Nanny } from "../../types/types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface AppointmentFormData {
   address: string;
@@ -11,7 +13,7 @@ interface AppointmentFormData {
   number: number;
   meetingTime: string;
   email: string;
-  text: string;
+  parentName: string;
   comment: string;
 }
 
@@ -20,29 +22,15 @@ interface AppointmentProps {
 }
 
 export const AppointmentSchema = Yup.object().shape({
-  address: Yup.string()
-    .min(3, "Address must be at least 3 characters")
-    .required("Address is required"),
-
+  address: Yup.string().required("Address is required"),
   tel: Yup.string()
     .matches(/^\+?[0-9\s-]+$/, "Invalid phone number format")
-    .required("Phone number is required"),
-
-  number: Yup.number()
-    .typeError("Number must be a number")
-    .positive("Must be positive")
-    .required("Number is required"),
-
-  meetingTime: Yup.string().required("Time is required"),
-
-  email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
-
-  text: Yup.string()
-    .min(5, "Text must be at least 5 characters")
-    .required("Text is required"),
-  comment: Yup.string().optional().required("Comment is required"),
+    .required("Phone is required"),
+  number: Yup.number().positive().required("Child age is required"),
+  meetingTime: Yup.string().required("Meeting time is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  parentName: Yup.string().required("Parent's name is required"),
+  comment: Yup.string().required("Comment is required"),
 });
 
 export default function Appointment({ nanny }: AppointmentProps) {
@@ -56,7 +44,12 @@ export default function Appointment({ nanny }: AppointmentProps) {
   });
 
   const onSubmit = (data: AppointmentFormData) => {
-    console.log(data);
+    console.log("Appointment data:", {
+      nanny: nanny.name,
+      ...data,
+    });
+
+    toast.success("Appointment request sent!");
     reset();
     closeModal();
   };
@@ -99,57 +92,52 @@ export default function Appointment({ nanny }: AppointmentProps) {
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.form_row}>
           <input
-            {...register("text")}
+            {...register("address")}
             className={css.input_row}
-            type="text"
             placeholder="Address"
-            required
-          ></input>
+          />
           <input
             {...register("tel")}
             className={css.input_row}
             type="tel"
             placeholder="+380"
-            required
-          ></input>
+          />
         </div>
+
         <div className={css.form_row}>
           <input
             {...register("number")}
             className={css.input_row}
             type="number"
             placeholder="Child's age"
-            required
-          ></input>
+          />
           <input
             {...register("meetingTime")}
             className={css.input_row}
             type="time"
-            required
-          ></input>
+          />
         </div>
+
         <input
           {...register("email")}
           className={css.input}
           type="email"
           placeholder="Email"
-          required
-        ></input>
+        />
+
         <input
-          {...register("text")}
+          {...register("parentName")}
           className={css.input}
-          type="text"
           placeholder="Father's or mother's name"
-          required
-        ></input>
+        />
+
         <textarea
           {...register("comment")}
           className={css.textarea}
-          name="comment"
-          placeholder="Comment"
           rows={3}
-          required
+          placeholder="Comment"
         />
+
         <button className={css.form_btn} type="submit">
           Send
         </button>
