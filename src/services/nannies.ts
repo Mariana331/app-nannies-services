@@ -17,7 +17,9 @@ export async function getNannies(
   filterKey: FilterKey = "All"
 ): Promise<Nanny[]> {
   const res = await axios.get(API_URL);
-  const data: Nanny[] = res.data;
+
+  const raw = res.data;
+  const data: Nanny[] = raw ? Object.values(raw) : [];
 
   const filtered = FILTERS[filterKey]
     ? data.filter((nanny) => {

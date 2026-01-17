@@ -20,6 +20,23 @@ function App() {
   const [isAuth, setIsAuth] = useState<boolean>(
     () => !!localStorage.getItem("token")
   );
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const toggleFavorite = (nannyName: string) => {
+    setFavorites((prev) => {
+      let updated;
+      if (prev.includes(nannyName)) {
+        updated = prev.filter((name) => name !== nannyName);
+      } else {
+        updated = [...prev, nannyName];
+      }
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      return updated;
+    });
+  };
 
   const location = useLocation();
   const page = location.pathname;
@@ -34,6 +51,7 @@ function App() {
         onLogOut={() => {
           logout();
           setIsAuth(false);
+          localStorage.removeItem("favorites");
         }}
       />
       {isModalOpen && (
@@ -46,8 +64,26 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/nannies" element={<Nannies />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/nannies"
+          element={
+            <Nannies
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+              isAuth={isAuth}
+            />
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+              isAuth={isAuth}
+            />
+          }
+        />
       </Routes>
     </div>
   );

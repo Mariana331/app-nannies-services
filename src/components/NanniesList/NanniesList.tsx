@@ -4,12 +4,26 @@ import type { Nanny } from "../../types/types";
 
 interface NanniesListProps {
   nannies: Nanny[];
+  favorites: string[];
+  toggleFavorite: (id: string) => void;
+  isAuth: boolean;
 }
-export default function NanniesList({ nannies }: NanniesListProps) {
+export default function NanniesList({
+  nannies,
+  favorites,
+  toggleFavorite,
+  isAuth,
+}: NanniesListProps) {
   return (
     <div className={css.nannies_list}>
       {nannies.map((nanny) => (
-        <NannyCard key={nanny.name} nanny={nanny} />
+        <NannyCard
+          key={nanny.name}
+          nanny={nanny}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+          isAuth={isAuth}
+        />
       ))}
     </div>
   );

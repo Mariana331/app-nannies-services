@@ -3,12 +3,21 @@ import type { Nanny } from "../../types/types";
 import { useModal } from "../ModalContext/UseModal";
 import { useState } from "react";
 import Appointment from "../Appointment/Appointment";
+import { toast } from "react-toastify";
 
 interface NannyCardProps {
   nanny: Nanny;
+  favorites: string[];
+  toggleFavorite: (id: string) => void;
+  isAuth: boolean;
 }
 
-export default function NannyCard({ nanny }: NannyCardProps) {
+export default function NannyCard({
+  nanny,
+  favorites,
+  toggleFavorite,
+  isAuth,
+}: NannyCardProps) {
   const { openModal } = useModal();
 
   const [showReviews, setShowReviews] = useState(false);
@@ -30,12 +39,33 @@ export default function NannyCard({ nanny }: NannyCardProps) {
     return age;
   }
 
+  const isFavorite = favorites.includes(nanny.name);
+
   return (
     <div className={css.card}>
-      <button className={css.favor_btn}>
-        <svg className={css.favorite_icon} width={26} height={26}>
-          <use href="/sprite.svg#icon-favor"></use>
-        </svg>
+      <button
+        className={css.favor_btn}
+        type="button"
+        onClick={() => {
+          if (!isAuth) {
+            toast.info("Only authorized users can add favorites.", {
+              position: "top-right",
+              autoClose: 3000,
+            });
+            return;
+          }
+          toggleFavorite(nanny.name);
+        }}
+      >
+        {isFavorite ? (
+          <svg className={css.heart_icon} width={26} height={26}>
+            <use href="/sprite.svg#icon-heart"></use>
+          </svg>
+        ) : (
+          <svg className={css.favorite_icon} width={26} height={26}>
+            <use href="/sprite.svg#icon-favor"></use>
+          </svg>
+        )}
       </button>
       <div className={css.image_box}>
         <svg className={css.image_icon} width={14} height={14}>

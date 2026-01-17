@@ -16,7 +16,17 @@ import {
 
 const pageSize = 3;
 
-export default function Nannies() {
+interface NanniesProps {
+  favorites: string[];
+  toggleFavorite: (id: string) => void;
+  isAuth: boolean;
+}
+
+export default function Nannies({
+  favorites,
+  toggleFavorite,
+  isAuth,
+}: NanniesProps) {
   const { closeModal, isModalOpen, modalContent } = useModal();
   const [currentPage, setCurrentPage] = useState(pageSize);
   const [sortBy, setSortBy] = useState<SortByKey>("name");
@@ -69,7 +79,14 @@ export default function Nannies() {
   return (
     <div className={css.nannies}>
       <CustomSelect onChange={handleFilterChange} />
-      {data && <NanniesList nannies={data.slice(0, currentPage)} />}
+      {data && (
+        <NanniesList
+          nannies={data.slice(0, currentPage)}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+          isAuth={isAuth}
+        />
+      )}
       {isModalOpen && <Modal onClose={closeModal}>{modalContent}</Modal>}
       {!isLoading && data && data.length === 0 && (
         <p>No nannies found for this filter.</p>

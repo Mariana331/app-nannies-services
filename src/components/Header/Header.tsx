@@ -31,7 +31,8 @@ export default function Header({
   };
 
   const headerStyle: React.CSSProperties = {
-    backgroundColor: page === "/nannies" ? "red" : "transparent",
+    backgroundColor:
+      page === "/nannies" || page === "/favorites" ? "red" : "transparent",
   };
 
   const isNannies = location.pathname === "/nannies";
