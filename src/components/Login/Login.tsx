@@ -49,6 +49,7 @@ export default function Login({ setIsAuth, setUserName }: LoginProps) {
       const userNameFromDB = await getUserName(res.localId, res.idToken);
       localStorage.setItem("userName", userNameFromDB);
       setUserName(userNameFromDB);
+      console.log("API KEY =", import.meta.env.VITE_FIREBASE_API_KEY);
 
       toast.success("Login successful!");
       closeModal();
