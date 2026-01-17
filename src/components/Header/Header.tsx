@@ -88,7 +88,7 @@ export default function Header({
                 </button>
                 <p className={css.user_text}>{userName}</p>
               </li>
-              <li>
+              <li className={css.user_info}>
                 <button
                   className={css.btn_logOut}
                   type="button"
