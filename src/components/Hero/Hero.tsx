@@ -16,7 +16,7 @@ export default function Hero() {
             <button className={css.btn} type="button">
               Get started
               <svg className={css.btn_icon} width={14} height={16}>
-                <use href="/public/sprite.svg#icon-arrow"></use>
+                <use href="/sprite.svg#icon-arrow"></use>
               </svg>
             </button>
           </Link>
@@ -26,7 +26,7 @@ export default function Hero() {
         <div className={css.badge}>
           <div className={css.badge_icon}>
             <svg width={30} height={30}>
-              <use href="/public/sprite.svg#icon-fe_check"></use>
+              <use href="sprite.svg#icon-fe_check"></use>
             </svg>
           </div>
           <div className={css.badge_text}>
