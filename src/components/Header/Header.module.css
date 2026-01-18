@@ -20,13 +20,17 @@
   letter-spacing: -0.02em;
   color: #fbfbfb;
   text-decoration: none;
-  transition: 0.2s ease, text-shadow 0.2s ease;
+  transition:
+    0.2s ease,
+    text-shadow 0.2s ease;
 }
 
 .nav_text:hover,
 .logo_text:hover {
   color: #ffffff;
-  text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff;
+  text-shadow:
+    0 0 8px #ffffff,
+    0 0 16px #ffffff;
 }
 
 .menu {
@@ -48,7 +52,9 @@
   letter-spacing: -0.01em;
   color: #fbfbfb;
   text-decoration: none;
-  transition: 0.2s ease, text-shadow 0.2s ease;
+  transition:
+    0.2s ease,
+    text-shadow 0.2s ease;
 }
 
 .nav_item {
@@ -141,11 +147,10 @@
 .btn_registration:hover {
   color: #f03f3b;
   background: #fbfbfb;
-  border: 1px solid rgba(240, 63, 59, 1);
 }
 
 .btn_log:hover {
   color: #f03f3b;
   background: #fbfbfb;
- border: 1px solid rgba(240, 63, 59, 1);
+  border: 1px solid rgba(240, 63, 59, 1);
 }

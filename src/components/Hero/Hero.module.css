@@ -44,7 +44,7 @@
   margin: 0;
 }
 
-.btn {
+.btn_hero {
   border: 1px solid rgba(251, 251, 251, 0.4);
   border-radius: 30px;
   padding: 18px 50px;
@@ -62,17 +62,17 @@
   gap: 18px;
 }
 
-.btn svg {
+.btn_hero svg {
   fill: #fbfbfb;
   transition: transform 0.2s ease;
   cursor: pointer;
 }
 
-.btn:hover svg {
+.btn_hero:hover svg {
   transform: rotate(55deg);
 }
 
-.btn:hover {
+.btn_hero:hover {
   border: 1px solid rgba(251, 251, 251, 0.804);
 }
 

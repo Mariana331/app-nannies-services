@@ -107,10 +107,13 @@
   color: #fbfbfb;
   background: #f03f3b;
   border-radius: 30px;
-  border: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
   cursor: pointer;
-  outline: none;
   margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn_signup:hover {

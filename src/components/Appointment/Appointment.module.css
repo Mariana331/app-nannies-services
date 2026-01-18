@@ -136,7 +136,7 @@
 .form_btn {
   background: #f03f3b;
   border-radius: 30px;
-  padding: 16px 217px;
+  height: 52px;
   border: none;
   font-weight: 500;
   font-size: 16px;
@@ -144,8 +144,12 @@
   letter-spacing: -0.01em;
   color: #fbfbfb;
   cursor: pointer;
+  box-sizing: border-box;
   margin-top: 24px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form_btn:hover {

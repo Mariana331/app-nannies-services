@@ -13,7 +13,7 @@ export default function Hero() {
             </p>
           </div>
           <Link className={css.link_nannies} to="/nannies" aria-label="Nannies">
-            <button className={css.btn} type="button">
+            <button className={css.btn_hero} type="button">
               Get started
               <svg className={css.btn_icon} width={14} height={16}>
                 <use href="/sprite.svg#icon-arrow"></use>
