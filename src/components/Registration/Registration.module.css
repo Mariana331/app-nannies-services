@@ -116,4 +116,5 @@
 .btn_signup:hover {
   color: #f03f3b;
   background: #fbfbfb;
+  border: 1px solid rgba(240, 63, 59, 1);
 }

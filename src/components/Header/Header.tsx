@@ -1,42 +1,42 @@
 import css from "./Header.module.css";
 import { Link, useLocation } from "react-router-dom";
 import { useModal } from "../ModalContext/UseModal";
+import Login from "../Login/Login";
+import Registration from "../Registration/Registration";
 
 interface HeaderProps {
-  setModalType: (type: "login" | "register") => void;
   page: string;
   isAuth: boolean;
   onLogOut: () => void;
   userName: string;
+  setIsAuth: (value: boolean) => void; // додано
+  setUserName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function Header({
-  setModalType,
   page,
   isAuth,
   onLogOut,
   userName,
+  setIsAuth,
+  setUserName,
 }: HeaderProps) {
   const { openModal } = useModal();
   const location = useLocation();
 
-  const openLogin = () => {
-    setModalType("login");
-    openModal();
-  };
+  const openLogin = () =>
+    openModal(<Login setIsAuth={setIsAuth} setUserName={setUserName} />);
 
-  const openRegistration = () => {
-    setModalType("register");
-    openModal();
-  };
+  const openRegistration = () =>
+    openModal(<Registration setIsAuth={setIsAuth} setUserName={setUserName} />);
+
+  const isNannies = location.pathname === "/nannies";
+  const isFavorites = location.pathname === "/favorites";
 
   const headerStyle: React.CSSProperties = {
     backgroundColor:
       page === "/nannies" || page === "/favorites" ? "red" : "transparent",
   };
-
-  const isNannies = location.pathname === "/nannies";
-  const isFavorites = location.pathname === "/favorites";
 
   return (
     <div className={css.header} style={headerStyle}>
@@ -59,7 +59,7 @@ export default function Header({
               </Link>
               {isNannies && (
                 <svg className={css.icon_point} width={8} height={8}>
-                  <use href="/sprite.svg#icon-point_white"></use>
+                  <use href="/sprite.svg#icon-point_white" />
                 </svg>
               )}
             </li>
@@ -70,20 +70,21 @@ export default function Header({
                 </Link>
                 {isFavorites && (
                   <svg className={css.icon_point} width={8} height={8}>
-                    <use href="/sprite.svg#icon-point_white"></use>
+                    <use href="/sprite.svg#icon-point_white" />
                   </svg>
                 )}
               </li>
             )}
           </ul>
         </nav>
+
         <ul className={css.registration}>
           {isAuth ? (
             <>
               <li className={css.user_info}>
                 <button className={css.user_btn}>
                   <svg className={css.icon_user} width={24} height={24}>
-                    <use href="/sprite.svg#icon-user"></use>
+                    <use href="/sprite.svg#icon-user" />
                   </svg>
                 </button>
                 <p className={css.user_text}>{userName}</p>

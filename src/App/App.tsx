@@ -4,42 +4,35 @@ import Home from "../pages/Home/Home";
 import Favorites from "../pages/Favorites/Favorites";
 import { Routes, Route, useLocation } from "react-router-dom";
 import css from "./App.module.css";
-import Login from "../components/Login/Login";
-import Registration from "../components/Registration/Registration";
-import Modal from "../components/Modal/Modal";
-import { useModal } from "../components/ModalContext/UseModal";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { logout } from "../services/users";
+import { useModal } from "../components/ModalContext/UseModal";
+import Modal from "../components/Modal/Modal";
 
 function App() {
-  const { closeModal, isModalOpen } = useModal();
-
-  const [modalType, setModalType] = useState<
-    "login" | "register" | "appointment" | null
-  >(null);
+  const location = useLocation();
+  const page = location.pathname;
 
   const [isAuth, setIsAuth] = useState<boolean>(
-    () => !!localStorage.getItem("token")
+    !!localStorage.getItem("token"),
   );
-
   const [favorites, setFavorites] = useState<string[]>(() => {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
   });
-
   const [userName, setUserName] = useState<string>(
-    () => localStorage.getItem("userName") || ""
+    localStorage.getItem("userName") || "",
   );
+
+  const { isModalOpen, modalContent, closeModal } = useModal();
 
   const toggleFavorite = (nannyName: string) => {
     setFavorites((prev) => {
       let updated;
-      if (prev.includes(nannyName)) {
+      if (prev.includes(nannyName))
         updated = prev.filter((name) => name !== nannyName);
-      } else {
-        updated = [...prev, nannyName];
-      }
+      else updated = [...prev, nannyName];
       localStorage.setItem("favorites", JSON.stringify(updated));
       return updated;
     });
@@ -52,28 +45,20 @@ function App() {
     setUserName("");
   };
 
-  const location = useLocation();
-  const page = location.pathname;
-
   return (
     <div className={css.app_container}>
+      {isModalOpen && modalContent && (
+        <Modal onClose={closeModal}>{modalContent}</Modal>
+      )}
       <Header
-        setModalType={setModalType}
         page={page}
         isAuth={isAuth}
         userName={userName}
         onLogOut={handleLogOut}
+        setIsAuth={setIsAuth}
+        setUserName={setUserName}
       />
-      {isModalOpen && (
-        <Modal onClose={closeModal}>
-          {modalType === "login" && (
-            <Login setIsAuth={setIsAuth} setUserName={setUserName} />
-          )}
-          {modalType === "register" && (
-            <Registration setIsAuth={setIsAuth} setUserName={setUserName} />
-          )}
-        </Modal>
-      )}
+
       <ToastContainer position="top-right" autoClose={3000} />
 
       <Routes>
