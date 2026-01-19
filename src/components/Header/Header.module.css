@@ -188,3 +188,83 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 1439px) and (min-width: 768px) {
+  .header,
+  .headerInNannies {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 40px;
+  }
+
+  .menu {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .navigation {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .registration {
+    margin-top: 10px;
+    gap: 6px;
+  }
+
+  .btn_log,
+  .btn_registration,
+  .btn_inNannies,
+  .btn_logOut {
+    font-size: 14px;
+    padding: 10px 24px;
+  }
+
+  .logo_text {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header,
+  .headerInNannies {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .logo_text {
+    font-size: 18px;
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .navigation {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .registration {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 6px;
+    gap: 6px;
+  }
+
+  .btn_log,
+  .btn_registration,
+  .btn_inNannies,
+  .btn_logOut {
+    width: 100%;
+    font-size: 12px;
+    padding: 8px;
+  }
+}
