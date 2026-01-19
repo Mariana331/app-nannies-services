@@ -77,26 +77,32 @@ export default function Nannies({
   };
 
   return (
-    <div className={css.nannies}>
-      <CustomSelect onChange={handleFilterChange} />
-      {data && (
-        <NanniesList
-          nannies={data.slice(0, currentPage)}
-          favorites={favorites}
-          toggleFavorite={toggleFavorite}
-          isAuth={isAuth}
-        />
-      )}
-      {isModalOpen && <Modal onClose={closeModal}>{modalContent}</Modal>}
-      {!isLoading && data && data.length === 0 && (
-        <p>No nannies found for this filter.</p>
-      )}
-      {isError && <ErrorMessage />}
-      {data && currentPage < data.length && (
-        <button type="button" className={css.btn} onClick={handleReadMore}>
-          Read more
-        </button>
-      )}
+    <div className={css.nannies_container}>
+      <div className={css.nannies}>
+        <CustomSelect onChange={handleFilterChange} />
+        {data && (
+          <NanniesList
+            nannies={data.slice(0, currentPage)}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+            isAuth={isAuth}
+          />
+        )}
+        {isModalOpen && <Modal onClose={closeModal}>{modalContent}</Modal>}
+        {!isLoading && data && data.length === 0 && (
+          <p>No nannies found for this filter.</p>
+        )}
+        {isError && <ErrorMessage />}
+        {data && currentPage < data.length && (
+          <button
+            type="button"
+            className={css.btn_nannies}
+            onClick={handleReadMore}
+          >
+            Read more
+          </button>
+        )}
+      </div>
     </div>
   );
 }

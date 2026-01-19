@@ -46,7 +46,9 @@ function App() {
   };
 
   return (
-    <div className={css.app_container}>
+    <div
+      className={`${css.app_container} ${location.pathname === "/" ? css.home : ""}`}
+    >
       {isModalOpen && modalContent && (
         <Modal onClose={closeModal}>{modalContent}</Modal>
       )}

@@ -1,16 +1,28 @@
+.header_container {
+  z-index: 2;
+  position: absolute;
+  background-color: transparent;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .header {
-  padding: 20px 128px;
+  padding: 20px 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
-  position: absolute;
-  top: 32px;
-  left: 32px;
-  right: 32px;
-  background-color: transparent;
-  box-sizing: border-box;
   border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+  max-width: 1376px;
+  margin: 0 auto;
+}
+
+.headerInNannies {
+  max-width: 1440px;
+  padding: 20px 128px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo_text {
@@ -125,6 +137,19 @@
   border: none;
 }
 
+.btn_inNannies {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  padding: 14px 39px;
+  background: transparent;
+  cursor: pointer;
+}
+
 .btn_logOut {
   font-weight: 500;
   font-size: 16px;
@@ -138,18 +163,14 @@
   border: none;
 }
 
-.btn_logOut:hover {
-  color: #f03f3b;
-  background: #fbfbfb;
-  border: 1px solid rgba(240, 63, 59, 1);
-}
-
 .btn_registration:hover {
   color: #f03f3b;
   background: #fbfbfb;
 }
 
-.btn_log:hover {
+.btn_inNannies:hover,
+.btn_log:hover,
+.btn_logOut:hover {
   color: #f03f3b;
   background: #fbfbfb;
   border: 1px solid rgba(240, 63, 59, 1);

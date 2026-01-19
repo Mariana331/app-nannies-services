@@ -3,6 +3,7 @@
   border-radius: 24px;
   background: #fbfbfb;
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   position: relative;
 }
@@ -45,11 +46,13 @@
 .all_text {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .all_text_one {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 .box_name_text {
@@ -70,6 +73,7 @@
 
 .box_block {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-right: 48px;
   align-items: flex-start;
@@ -139,28 +143,31 @@
   background: #f3f3f3;
   border-radius: 24px;
   padding: 8px 16px;
-  max-height: 40px;
+  min-height: 40px;
 }
 
 .kids_age {
   background: #f3f3f3;
   border-radius: 24px;
   padding: 8px 16px;
-  max-height: 40px;
+  min-height: 40px;
 }
 
 .characters {
   background: #f3f3f3;
   border-radius: 24px;
   padding: 8px 16px;
-  max-height: 40px;
+  min-height: 40px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .education {
   background: #f3f3f3;
   border-radius: 24px;
   padding: 8px 16px;
-  max-height: 40px;
+  min-height: 40px;
 }
 
 .about {
@@ -194,7 +201,7 @@
 .review_name {
   display: flex;
   gap: 12px;
-  max-height: 44px;
+  min-height: 44px;
 }
 
 .name_one_letter {
@@ -242,11 +249,6 @@
   margin: 0;
 }
 
-.btn {
-  top: 537px;
-  left: 168px;
-}
-
 .card_btn {
   font-weight: 500;
   font-size: 16px;
@@ -266,4 +268,20 @@
   color: #f03f3b;
   background: #fbfbfb;
   border: 1px solid rgba(240, 63, 59, 1);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .all_text_one {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .card {
+    flex-wrap: nowrap;
+  }
+
+  .all_text_one {
+    justify-content: space-between;
+  }
 }

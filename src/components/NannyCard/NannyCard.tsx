@@ -130,7 +130,9 @@ export default function NannyCard({
           <div className={css.characters}>
             <p className={css.private_text}>
               Characters:{" "}
-              <span className={css.span_text_info}>{nanny.characters}</span>
+              <span className={css.span_text_info}>
+                {nanny.characters.join(", ")}
+              </span>
             </p>
           </div>
           <div className={css.education}>
