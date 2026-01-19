@@ -175,3 +175,16 @@
   background: #fbfbfb;
   border: 1px solid rgba(240, 63, 59, 1);
 }
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .burger_icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .burger_btn {
+    display: none;
+  }
+}

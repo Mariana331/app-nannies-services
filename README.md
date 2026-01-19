@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# Nanny.Services 👶🧡
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Nanny.Services** — це веб-застосунок для пошуку нянь, з можливістю перегляду профілів, додавання в обране та створення зустрічей. Проєкт реалізовано на React + TypeScript, із Firebase авторизацією та React Query для роботи з даними.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Функціонал
 
-## React Compiler
+- 🔍 Перегляд нянь з бази даних
+- 🏷 Фільтрація та сортування (за містом, рейтингом, ціною тощо)
+- ⭐ Додавання в **Favorites**
+- 🔐 Реєстрація та логін (Firebase Auth)
+- 💬 Заявка на зустріч (модальне вікно)
+- 📱 Повністю адаптивна верстка (Desktop + Mobile)
+- 📁 Стан збережeno через LocalStorage (Favorites)
+- 🚀 Справжній бекенд (Firebase Realtime DB)
+- 🎯 UX з кастомним Mobile меню та Modal системою
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 🧩 Технології
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Використано:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Технологія               | Для чого                   |
+| ------------------------ | -------------------------- |
+| **React + TS**           | UI та типобезпечність      |
+| **React Router**         | Маршрутизація              |
+| **React Query**          | Кешування та data fetching |
+| **Firebase Auth**        | Логін та реєстрація        |
+| **Firebase Realtime DB** | Дані нянь                  |
+| **Context API**          | Модалки + глобальний стан  |
+| **LocalStorage**         | Збереження Favorites       |
+| **CSS Modules**          | Стилі із scoped областю    |
+| **Axios**                | HTTP запити                |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📂 Структура проекту
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+```txt
+src/
+ ├── components/
+ │   ├── Header/
+ │   ├──Hero/
+ │   ├── Modal/
+ │   ├── Login/
+ │   ├── Registration/
+ │   ├── Appointment/
+ │   ├── NanniesList/
+ │   ├── NannyCard/
+ │   ├──ErrorMessage
+ │   ├──ModalContext
+ │   ├──CustomSelect
+ │   └── ...
+ ├── pages/
+ │   ├── Home/
+ │   ├── Nannies/
+ │   └── Favorites/
+ ├── services/
+ │   ├── nannies.ts
+ │   └── users.ts
+ │
+ ├── types/
+ ├── assets/
+ ├── constants/
+ └── main.tsx
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+🚀 Запуск проекту локально
+git clone https://github.com/Mariana331/nanny-services.git
+cd nanny-services
+npm install
+npm run dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Проєкт стартує на:
+http://localhost:5173
+
+👤 Авторизація
+Доступні дії:
+
+Registration
+
+Login
+
+Logout
+
+Збереження стану юзера
+
+Відображення імені в Header
+
+⭐ Favorites
+Favorites зберігаються в localStorage.
+
+🖥 Деплой
+Проєкт можна задеплоїти на:
+
+Vercel
+
+Netlify
+
+Firebase Hosting
+
 ```

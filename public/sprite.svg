@@ -1,5 +1,8 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
+<symbol id="icon-burger" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3" d="M5.333 8h21.333M5.333 16H16M5.333 24h21.333"/>
+    </symbol>
 <symbol id="icon-eye" viewBox="0 0 32 32">
   <path
     stroke="currentColor"
