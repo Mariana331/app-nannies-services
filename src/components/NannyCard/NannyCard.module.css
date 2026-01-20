@@ -55,6 +55,10 @@
   margin-bottom: 24px;
 }
 
+.box_name {
+  margin-bottom: 16px;
+}
+
 .box_name_text {
   font-weight: 500;
   font-size: 16px;
@@ -284,5 +288,9 @@
 
   .all_text_one {
     justify-content: space-between;
+  }
+
+  .box_name {
+    margin-bottom: 0;
   }
 }

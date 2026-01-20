@@ -1,9 +1,10 @@
-🎀❤️ Nanny.Services
+# 🎀❤️ Nanny.Services
 
 Nanny.Services is a web application designed to help families find nannies, browse profiles, save favorites and request meetings.
 Built with React + TypeScript, Firebase Auth, and React Query for data handling.
 
-✨ Features
+## ✨ Features
+
 🔍 Browse nannies from a live database
 🏷 Filter & sort by city, rating, price, etc.
 ⭐ Add to Favorites
@@ -14,7 +15,8 @@ Built with React + TypeScript, Firebase Auth, and React Query for data handling.
 📊 Real backend using Firebase Realtime Database
 🎯 Custom UX for Mobile Menu & Modal system
 
-🧩 Tech Stack
+## 🧩 Tech Stack
+
 Technology Purpose
 React + TypeScript UI + type safety
 React Router Client-side routing
@@ -26,7 +28,8 @@ LocalStorage Favorites persistence
 CSS Modules Scoped component-level styling
 Axios HTTP requests
 
-📂 Project Structure
+## 📂 Project Structure
+
 src/
 ├── components/
 │ ├── Header/
@@ -54,16 +57,19 @@ src/
 ├── constants/
 └── main.tsx
 
-🚀 Running Locally
+## 🚀 Running Locally
+
 git clone https://github.com/Mariana331/nanny-services.git
 cd nanny-services
 npm install
 npm run dev
 
-App launches at:
+## App launches at:
+
 http://localhost:5173
 
-👤 Authentication
+## 👤 Authentication
+
 Available actions:
 📝 Registration
 🔑 Login
@@ -71,10 +77,12 @@ Available actions:
 🧾 Persistent user state
 🧍 Username visible in Header
 
-⭐ Favorites
+## ⭐ Favorites
+
 Favorites are stored in LocalStorage, so user preferences stay saved after refresh.
 
-🖥 Deployment
+## 🖥 Deployment
+
 Can be deployed on:
 ▲ Vercel
 🌐 Netlify
