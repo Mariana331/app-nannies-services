@@ -5,14 +5,13 @@
   overflow: hidden;
   margin: 0 auto;
   max-width: 1376px;
-
   padding: 0 20px;
 }
 
 .hero_left {
   width: 100%;
   background: #f03f3b;
-  padding: 151px 20px 163px 20px;
+  padding: 120px 20px 80px 20px;
 }
 
 .left_inner {
@@ -23,8 +22,8 @@
 
 .hero_left,
 .hero_right {
-  flex: 1 1 50%;
-  min-width: 0;
+  flex: none;
+  width: 100%;
 }
 
 .title {
@@ -49,11 +48,11 @@
 .btn_hero {
   border: 1px solid rgba(251, 251, 251, 0.4);
   border-radius: 30px;
-  padding: 18px 50px;
+  padding: 14px 32px;
   background-color: transparent;
   cursor: pointer;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 120%;
   letter-spacing: -0.01em;
   text-decoration: none;
@@ -61,7 +60,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+}
+
+.btn_hero {
+  padding: 18px 50px;
+  font-size: 20px;
   gap: 18px;
+}
+
+.btn_hero svg {
+  width: 12px;
+  height: 14px;
 }
 
 .btn_hero svg {
@@ -80,7 +90,7 @@
 
 .hero_right {
   position: relative;
-  padding: 418px 20px 20px 289px;
+  padding: 200px 20px 20px 20px;
   background-image: url(/HeroImages/Rectangle-1-min.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -94,22 +104,22 @@
 }
 
 .badge {
-  padding: 32px;
+  padding: 20px;
   display: flex;
   border-radius: 20px;
   background: #fbfbfb;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   position: absolute;
-  right: 50px;
-  bottom: 50px;
+  right: 20px;
+  bottom: 20px;
 }
 
 .badge_icon {
-  border-radius: 13px;
-  width: 54px;
-  height: 54px;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
   background: #f03f3b;
   display: flex;
   align-items: center;
@@ -124,7 +134,7 @@
 
 .badge_text_nannies {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   color: rgba(17, 16, 28, 0.5);
   line-height: 1.2;
   margin-top: 0;
@@ -133,7 +143,7 @@
 
 .badge_text_span {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   color: #11101c;
   line-height: 1.1;
 }
@@ -164,11 +174,40 @@
     line-height: 115%;
     letter-spacing: -0.015em;
   }
+
+  .badge {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    padding: 32px;
+    gap: 16px;
+  }
+
+  .badge_icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 13px;
+  }
+
+  .badge_text_nannies {
+    font-size: 16px;
+  }
+
+  .badge_text_span {
+    font-size: 24px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .hero {
     padding: 0;
+    border-radius: 30px;
+  }
+
+  .hero_left,
+  .hero_right {
+    flex: 1 1 50%;
+    min-width: 0;
   }
 
   .hero_left {
@@ -191,5 +230,24 @@
     font-size: 28px;
     line-height: 107%;
     letter-spacing: -0.02em;
+  }
+
+  .btn_hero {
+    padding: 18px 50px;
+    font-size: 20px;
+    gap: 18px;
+  }
+
+  .btn_hero svg {
+    width: 14px;
+    height: 16px;
+  }
+
+  .badge {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    padding: 32px;
+    gap: 16px;
   }
 }

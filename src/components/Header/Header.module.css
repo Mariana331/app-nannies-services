@@ -4,10 +4,13 @@
   background-color: transparent;
   box-sizing: border-box;
   width: 100%;
+  background-color: red;
+  left: 0;
 }
 
 .header {
-  padding: 20px 96px;
+  position: relative;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,8 +20,9 @@
 }
 
 .headerInNannies {
+  position: relative;
+  padding: 20px 40px;
   max-width: 1440px;
-  padding: 20px 128px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -27,7 +31,7 @@
 
 .logo_text {
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 117%;
   letter-spacing: -0.02em;
   color: #fbfbfb;
@@ -57,6 +61,10 @@
   margin: 0;
 }
 
+.menu {
+  display: none;
+}
+
 .nav_text {
   font-weight: 400;
   font-size: 16px;
@@ -83,6 +91,10 @@
 .registration {
   display: flex;
   gap: 8px;
+}
+
+.registration {
+  display: none;
 }
 
 .user_info {
@@ -163,108 +175,79 @@
   border: none;
 }
 
-.btn_registration:hover {
+.btn_registration:hover,
+.btn_logOut:hover {
   color: #f03f3b;
   background: #fbfbfb;
 }
 
 .btn_inNannies:hover,
-.btn_log:hover,
-.btn_logOut:hover {
+.btn_log:hover {
   color: #f03f3b;
   background: #fbfbfb;
   border: 1px solid rgba(240, 63, 59, 1);
 }
 
+.burger_btn {
+  position: absolute;
+  top: 16px;
+  right: 20%;
+  transform: translateX(20%);
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.burger_icon {
+  display: block;
+  stroke: #fbfbfb;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1439px) {
-  .burger_icon {
-    width: 40px;
-    height: 40px;
+  .header {
+    padding: 20px 76px;
+  }
+  .menu {
+    display: none;
+  }
+
+  .burger_btn {
+    position: absolute;
+    top: 24px;
+    right: 20%;
   }
 }
 
 @media screen and (min-width: 1440px) {
+  .header {
+    padding: 20px 96px;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  .logo_text {
+    font-size: 24px;
+  }
+
+  .registration {
+    display: flex;
+  }
+
   .burger_btn {
     display: none;
   }
-}
 
-@media screen and (max-width: 1439px) and (min-width: 768px) {
-  .header,
+  .header {
+    padding: 20px 96px;
+  }
+
   .headerInNannies {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 40px;
-  }
-
-  .menu {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    gap: 20px;
-  }
-
-  .navigation {
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .registration {
-    margin-top: 10px;
-    gap: 6px;
-  }
-
-  .btn_log,
-  .btn_registration,
-  .btn_inNannies,
-  .btn_logOut {
-    font-size: 14px;
-    padding: 10px 24px;
-  }
-
-  .logo_text {
-    font-size: 22px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .header,
-  .headerInNannies {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-  }
-
-  .logo_text {
-    font-size: 18px;
-  }
-
-  .menu {
-    flex-direction: column;
-    width: 100%;
-    gap: 6px;
-  }
-
-  .navigation {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    gap: 8px;
-  }
-
-  .registration {
-    flex-direction: column;
-    width: 100%;
-    margin-top: 6px;
-    gap: 6px;
-  }
-
-  .btn_log,
-  .btn_registration,
-  .btn_inNannies,
-  .btn_logOut {
-    width: 100%;
-    font-size: 12px;
-    padding: 8px;
+    max-width: 1440px;
+    padding: 20px 128px;
   }
 }

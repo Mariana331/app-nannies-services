@@ -89,25 +89,27 @@ export default function Favorites({
     data?.filter((nanny) => favorites.includes(nanny.name)) ?? [];
 
   return (
-    <div className={css.favorites}>
-      <CustomSelect onChange={handleFilterChange} />
-      {favoriteNannies.length > 0 ? (
-        <NanniesList
-          nannies={favoriteNannies.slice(0, currentPage)}
-          favorites={favorites}
-          toggleFavorite={toggleFavorite}
-          isAuth={isAuth}
-        />
-      ) : (
-        !isLoading && <p>You have no favorite nannies yet.</p>
-      )}
-      {isModalOpen && <Modal onClose={closeModal}>{modalContent}</Modal>}
-      {isError && <p>Error loading nannies.</p>}
-      {favoriteNannies.length > currentPage && (
-        <button type="button" className={css.btn} onClick={handleReadMore}>
-          Read more
-        </button>
-      )}
+    <div className={css.favorites_container}>
+      <div className={css.favorites}>
+        <CustomSelect onChange={handleFilterChange} />
+        {favoriteNannies.length > 0 ? (
+          <NanniesList
+            nannies={favoriteNannies.slice(0, currentPage)}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+            isAuth={isAuth}
+          />
+        ) : (
+          !isLoading && <p>You have no favorite nannies yet.</p>
+        )}
+        {isModalOpen && <Modal onClose={closeModal}>{modalContent}</Modal>}
+        {isError && <p>Error loading nannies.</p>}
+        {favoriteNannies.length > currentPage && (
+          <button type="button" className={css.btn} onClick={handleReadMore}>
+            Read more
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import css from "./Header.module.css";
+import MobileMenu from "../mobileMenu/mobileMenu";
 import { Link, useLocation } from "react-router-dom";
 import { useModal } from "../ModalContext/UseModal";
 import Login from "../Login/Login";
 import Registration from "../Registration/Registration";
+import { useState } from "react";
 
 interface HeaderProps {
   page: string;
@@ -23,6 +25,7 @@ export default function Header({
 }: HeaderProps) {
   const { openModal } = useModal();
   const location = useLocation();
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const openLogin = () =>
     openModal(<Login setIsAuth={setIsAuth} setUserName={setUserName} />);
@@ -136,6 +139,26 @@ export default function Header({
             )}
           </ul>
         </div>
+        <button
+          className={css.burger_btn}
+          type="button"
+          onClick={() => setMobileMenuOpen(true)}
+        >
+          <svg className={css.burger_icon} width="32" height="32">
+            <use href="/sprite.svg#icon-burger" data-menu-open></use>
+          </svg>
+        </button>
+        <MobileMenu
+          isOpen={isMobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
+          isAuth={isAuth}
+          userName={userName}
+          onLogOut={onLogOut}
+          onLogin={openLogin}
+          onRegistration={openRegistration}
+          isNannies={isNannies}
+          isFavorites={isFavorites}
+        />
       </div>
     </div>
   );
