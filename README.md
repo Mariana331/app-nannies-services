@@ -50,9 +50,9 @@ src/
  │   ├── Appointment/
  │   ├── NanniesList/
  │   ├── NannyCard/
- │   ├──ErrorMessage
- │   ├──ModalContext
- │   ├──CustomSelect
+ │   ├──ErrorMessage/
+ │   ├──ModalContext/
+ │   ├──CustomSelect/
  │   └── ...
  ├── pages/
  │   ├── Home/
