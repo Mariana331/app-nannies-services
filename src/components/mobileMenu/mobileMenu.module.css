@@ -24,8 +24,8 @@
 
 .mobile_btn_close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -50px;
+  right: 20px;
   background: transparent;
   border: none;
   cursor: pointer;

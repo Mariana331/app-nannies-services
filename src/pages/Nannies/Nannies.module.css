@@ -8,7 +8,7 @@
   flex-direction: column;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 128px;
+  padding: 152px 20px;
 }
 
 .btn_nannies {
@@ -30,14 +30,6 @@
   color: #f03f3b;
   background: #fbfbfb;
   border: 1px solid rgba(240, 63, 59, 1);
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .nannies {
-    padding: 152px 20px;
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {

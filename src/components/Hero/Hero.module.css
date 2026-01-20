@@ -5,7 +5,7 @@
   overflow: hidden;
   margin: 0 auto;
   max-width: 1376px;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .hero_left {
@@ -149,10 +149,6 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {
-  .hero {
-    padding: 0 40px;
-  }
-
   .hero_left {
     padding: 201px 64px 163px 56px;
   }
