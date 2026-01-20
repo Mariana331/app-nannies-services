@@ -1,104 +1,101 @@
-# Nanny.Services 👶🧡
+🎀❤️ Nanny.Services
 
-**Nanny.Services** — це веб-застосунок для пошуку нянь, з можливістю перегляду профілів, додавання в обране та створення зустрічей. Проєкт реалізовано на React + TypeScript, із Firebase авторизацією та React Query для роботи з даними.
+Nanny.Services is a web application designed to help families find nannies, browse profiles, save favorites and request meetings.
+Built with React + TypeScript, Firebase Auth, and React Query for data handling.
 
----
+✨ Features
 
-## ✨ Функціонал
+🔍 Browse nannies from a live database
 
-- 🔍 Перегляд нянь з бази даних
-- 🏷 Фільтрація та сортування (за містом, рейтингом, ціною тощо)
-- ⭐ Додавання в **Favorites**
-- 🔐 Реєстрація та логін (Firebase Auth)
-- 💬 Заявка на зустріч (модальне вікно)
-- 📱 Повністю адаптивна верстка (Desktop + Mobile)
-- 📁 Стан збережeno через LocalStorage (Favorites)
-- 🚀 Справжній бекенд (Firebase Realtime DB)
-- 🎯 UX з кастомним Mobile меню та Modal системою
+🏷 Filter & sort by city, rating, price, etc.
 
----
+⭐ Add to Favorites
 
-## 🧩 Технології
+🔐 User registration & login (Firebase Auth)
 
-Використано:
+💬 Meeting request via Modal
 
-| Технологія               | Для чого                   |
-| ------------------------ | -------------------------- |
-| **React + TS**           | UI та типобезпечність      |
-| **React Router**         | Маршрутизація              |
-| **React Query**          | Кешування та data fetching |
-| **Firebase Auth**        | Логін та реєстрація        |
-| **Firebase Realtime DB** | Дані нянь                  |
-| **Context API**          | Модалки + глобальний стан  |
-| **LocalStorage**         | Збереження Favorites       |
-| **CSS Modules**          | Стилі із scoped областю    |
-| **Axios**                | HTTP запити                |
+📱 Fully responsive (Desktop + Mobile)
 
----
+💾 Favorites persistence via LocalStorage
 
-## 📂 Структура проекту
+📊 Real backend using Firebase Realtime Database
 
-```txt
+🎯 Custom UX for Mobile Menu & Modal system
+
+🧩 Tech Stack
+Technology Purpose
+React + TypeScript UI + type safety
+React Router Client-side routing
+React Query Data fetching + caching
+Firebase Auth Authentication
+Firebase Realtime DB Live data storage
+Context API Modal + global state management
+LocalStorage Favorites persistence
+CSS Modules Scoped component-level styling
+Axios HTTP requests
+📂 Project Structure
 src/
- ├── components/
- │   ├── Header/
- │   ├──Hero/
- │   ├── Modal/
- │   ├── Login/
- │   ├── MobileMenu/
- │   ├── Registration/
- │   ├── Appointment/
- │   ├── NanniesList/
- │   ├── NannyCard/
- │   ├──ErrorMessage/
- │   ├──ModalContext/
- │   ├──CustomSelect/
- │   └── ...
- ├── pages/
- │   ├── Home/
- │   ├── Nannies/
- │   └── Favorites/
- ├── services/
- │   ├── nannies.ts
- │   └── users.ts
- │
- ├── types/
- ├── assets/
- ├── constants/
- └── main.tsx
+├── components/
+│ ├── Header/
+│ ├── Hero/
+│ ├── Modal/
+│ ├── Login/
+│ ├── MobileMenu/
+│ ├── Registration/
+│ ├── Appointment/
+│ ├── NanniesList/
+│ ├── NannyCard/
+│ ├── ErrorMessage/
+│ ├── ModalContext/
+│ ├── CustomSelect/
+│ └── ...
+├── pages/
+│ ├── Home/
+│ ├── Nannies/
+│ └── Favorites/
+├── services/
+│ ├── nannies.ts
+│ └── users.ts
+├── types/
+├── assets/
+├── constants/
+└── main.tsx
 
-🚀 Запуск проекту локально
+🚀 Running Locally
 git clone https://github.com/Mariana331/nanny-services.git
 cd nanny-services
 npm install
 npm run dev
 
-Проєкт стартує на:
+App launches at:
+
 http://localhost:5173
 
-👤 Авторизація
-Доступні дії:
+👤 Authentication
 
-Registration
+Available actions:
 
-Login
+📝 Registration
 
-Logout
+🔑 Login
 
-Збереження стану юзера
+🚪 Logout
 
-Відображення імені в Header
+🧾 Persistent user state
+
+🧍 Username visible in Header
 
 ⭐ Favorites
-Favorites зберігаються в localStorage.
 
-🖥 Деплой
-Проєкт можна задеплоїти на:
+Favorites are stored in LocalStorage, so user preferences are kept even after refresh.
 
-Vercel
+🖥 Deployment
 
-Netlify
+Can be deployed on:
 
-Firebase Hosting
+▲ Vercel
 
-```
+🌐 Netlify
+
+🔥 Firebase Hosting
