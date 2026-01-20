@@ -29,6 +29,10 @@
   align-items: center;
 }
 
+.logo {
+  padding-left: 20px;
+}
+
 .logo_text {
   font-weight: 500;
   font-size: 20px;
@@ -224,6 +228,10 @@
 @media screen and (min-width: 1440px) {
   .header {
     padding: 20px 96px;
+  }
+
+  .logo {
+    padding-left: 0;
   }
 
   .menu {
