@@ -2,7 +2,7 @@ import Header from "../components/Header/Header";
 import Nannies from "../pages/Nannies/Nannies";
 import Home from "../pages/Home/Home";
 import Favorites from "../pages/Favorites/Favorites";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import css from "./App.module.css";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
@@ -11,9 +11,6 @@ import { useModal } from "../components/ModalContext/UseModal";
 import Modal from "../components/Modal/Modal";
 
 function App() {
-  const location = useLocation();
-  const page = location.pathname;
-
   const [isAuth, setIsAuth] = useState<boolean>(
     !!localStorage.getItem("token"),
   );
@@ -53,7 +50,6 @@ function App() {
         <Modal onClose={closeModal}>{modalContent}</Modal>
       )}
       <Header
-        page={page}
         isAuth={isAuth}
         userName={userName}
         onLogOut={handleLogOut}

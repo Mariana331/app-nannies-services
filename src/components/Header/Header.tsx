@@ -7,7 +7,6 @@ import Registration from "../Registration/Registration";
 import { useState } from "react";
 
 interface HeaderProps {
-  page: string;
   isAuth: boolean;
   onLogOut: () => void;
   userName: string;
@@ -16,7 +15,6 @@ interface HeaderProps {
 }
 
 export default function Header({
-  page,
   isAuth,
   onLogOut,
   userName,
@@ -36,26 +34,24 @@ export default function Header({
   const isNannies = location.pathname === "/nannies";
   const isFavorites = location.pathname === "/favorites";
 
-  const headerStyle: React.CSSProperties = {
-    backgroundColor:
-      page === "/nannies" || page === "/favorites" ? "red" : "transparent",
-  };
-
-  const buttonRegistration =
+  const innerChange =
     location.pathname === "/nannies" || location.pathname === "/favorites";
 
-  const changePadding =
-    location.pathname === "/nannies" || location.pathname === "/favorites";
+  const isHome = location.pathname === "/";
 
   return (
-    <div className={css.header_container} style={headerStyle}>
-      <div className={changePadding ? css.headerInNannies : css.header}>
-        <div className={css.logo}>
+    <div
+      className={
+        innerChange ? css.header_container_inner : css.header_container
+      }
+    >
+      <div className={innerChange ? css.headerInNannies : css.header}>
+        <div className={innerChange ? css.inner_logo : css.logo}>
           <Link to="/" aria-label="Home" className={css.logo_text}>
             Nanny.Services
           </Link>
         </div>
-        <div className={css.menu}>
+        <div className={`${css.menu} ${isHome ? css.menu_home : ""}`}>
           <nav className={css.nav}>
             <ul className={css.navigation}>
               <li>
@@ -87,7 +83,8 @@ export default function Header({
               )}
             </ul>
           </nav>
-
+        </div>
+        <div className={css.registration_form}>
           <ul className={css.registration}>
             {isAuth ? (
               <>
@@ -101,9 +98,7 @@ export default function Header({
                 </li>
                 <li className={css.user_info}>
                   <button
-                    className={
-                      buttonRegistration ? css.btn_inNannies : css.btn_logOut
-                    }
+                    className={innerChange ? css.btn_inNannies : css.btn_logOut}
                     type="button"
                     onClick={onLogOut}
                   >
@@ -125,9 +120,7 @@ export default function Header({
                 <li>
                   <button
                     className={
-                      buttonRegistration
-                        ? css.btn_inNannies
-                        : css.btn_registration
+                      innerChange ? css.btn_inNannies : css.btn_registration
                     }
                     type="button"
                     onClick={openRegistration}

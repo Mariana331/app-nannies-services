@@ -19,6 +19,12 @@
   padding: 0;
 }
 
+.icon_favor {
+  fill: none;
+  stroke: #11101c;
+  stroke-width: 2;
+}
+
 .heart_icon {
   color: #f03f3b;
 }
