@@ -59,26 +59,18 @@ export default function Header({
                   Home
                 </Link>
               </li>
-              <li className={css.nav_item}>
+              <li className={`${css.nav_item} ${isNannies ? css.active : ""}`}>
                 <Link className={css.nav_text} to="/nannies">
                   Nannies
                 </Link>
-                {isNannies && (
-                  <svg className={css.icon_point} width={8} height={8}>
-                    <use href="/sprite.svg#icon-point_white" />
-                  </svg>
-                )}
               </li>
               {isAuth && (
-                <li className={css.nav_item}>
+                <li
+                  className={`${css.nav_item} ${isFavorites ? css.active : ""}`}
+                >
                   <Link className={css.nav_text} to="/favorites">
                     Favorites
                   </Link>
-                  {isFavorites && (
-                    <svg className={css.icon_point} width={8} height={8}>
-                      <use href="/sprite.svg#icon-point_white" />
-                    </svg>
-                  )}
                 </li>
               )}
             </ul>

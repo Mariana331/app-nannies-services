@@ -98,9 +98,8 @@
 }
 
 .nav_item {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
   align-items: center;
 }
 
@@ -228,6 +227,18 @@
 .burger_icon {
   display: block;
   stroke: #fbfbfb;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fbfbfb;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {

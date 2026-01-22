@@ -1,6 +1,6 @@
 # 🎀 Nanny.Services
 
-Nanny.Services is a web application designed to help families find nannies, browse profiles, save favorites, and request meetings.
+Nanny.Services is a application designed to help families find nannies, browse profiles, save favorites, and request meetings.
 Built with React + TypeScript, Firebase Auth, and React Query for efficient data handling.
 
 ## ✨ Features
