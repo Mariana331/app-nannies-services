@@ -36,46 +36,6 @@ LocalStorage Favorites persistence
 CSS Modules Scoped styling
 Axios HTTP requests
 
-## 📂 Project Structure
-
-src/
-├── components/
-│ ├── Header/
-│ ├── Hero/
-│ ├── Modal/
-│ ├── Login/
-│ ├── MobileMenu/
-│ ├── Registration/
-│ ├── Appointment/
-│ ├── NanniesList/
-│ ├── NannyCard/
-│ ├── ErrorMessage/
-│ ├── ModalContext/
-│ ├── CustomSelect/
-│ └── ...
-├── pages/
-│ ├── Home/
-│ ├── Nannies/
-│ └── Favorites/
-├── services/
-│ ├── nannies.ts
-│ └── users.ts
-├── types/
-├── assets/
-├── constants/
-└── main.tsx
-
-## 🚀 Running Locally
-
-git clone https://github.com/Mariana331/nanny-services.git
-cd nanny-services
-npm install
-npm run dev
-
-## App runs at:
-
-➡ http://localhost:5173
-
 ## 👤 Authentication
 
 Available actions:
